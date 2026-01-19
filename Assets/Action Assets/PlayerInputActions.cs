@@ -109,6 +109,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""27745305-ada3-4fb7-9cc9-dc20cedfa521"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -166,6 +175,61 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""8f911355-b545-4218-8969-4c5b8ee93c67"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""92d8e0ef-2671-4d92-87d5-4d55f55a923c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""a23eaa15-cdbe-4df1-9e19-47b9a14cb3a9"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""67746598-0b1e-46a5-a026-6f5b71be7067"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""bf7a7846-868b-4e7b-8e4c-1737115fd672"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -176,6 +240,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -258,6 +323,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Movement;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -277,6 +343,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Shoot".
         /// </summary>
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Movement".
+        /// </summary>
+        public InputAction @Movement => m_Wrapper.m_Player_Movement;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -309,6 +379,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
         }
 
         /// <summary>
@@ -326,6 +399,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
         }
 
         /// <summary>
@@ -380,5 +456,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShoot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMovement(InputAction.CallbackContext context);
     }
 }
