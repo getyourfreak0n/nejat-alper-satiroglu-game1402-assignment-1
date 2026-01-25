@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 43536050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.76, y: -2.46, z: 0}
+  m_LocalPosition: {x: -7.76, y: -2.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -246,8 +246,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.008252025}
+  m_Size: {x: 1, y: 2.016504}
   m_Direction: 0
 --- !u!50 &43536054
 Rigidbody2D:
@@ -275,7 +275,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &43536055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,8 +289,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 10
-  jumpForce: 15
+  jumpForce: 7.2
   inputManager: {fileID: 2077280107}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  startPointOffset: {x: 0, y: -1.35}
+  groundCheckDistance: -0.5
 --- !u!1 &110779464
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +307,7 @@ GameObject:
   - component: {fileID: 110779466}
   - component: {fileID: 110779465}
   - component: {fileID: 110779467}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -17,13 +17,13 @@ public class InputManager : MonoBehaviour
     void OnEnable()
     {
         _playerInputActions.Player.Jump.performed += OnJumpPressed;
-        _playerInputActions.Player.Horizontal.performed += OnMovement;
+        //_playerInputActions.Player.Horizontal.performed += OnMovement;
     }
 
     void OnDisable()
     {
         _playerInputActions.Player.Jump.performed -= OnJumpPressed;
-        _playerInputActions.Player.Horizontal.performed -= OnMovement;
+        //_playerInputActions.Player.Horizontal.performed -= OnMovement;
         _playerInputActions.Disable();
     }
 
@@ -32,8 +32,13 @@ public class InputManager : MonoBehaviour
         OnJump?.Invoke();
     }
 
-    void OnMovement(InputAction.CallbackContext context)
+    void OnMovement()
     {
-        OnMove?.Invoke(context.ReadValue<float>());
+        OnMove?.Invoke(_playerInputActions.Player.Horizontal.ReadValue<float>());
+    }
+
+    void Update()
+    {
+        OnMovement();
     }
 }
