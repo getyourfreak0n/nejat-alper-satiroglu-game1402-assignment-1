@@ -14,7 +14,7 @@ public class InputTest : MonoBehaviour
     void OnEnable()
     {
         _testActions.Player.Jump.performed += Jump;
-        _testActions.Player.Shoot.performed += Shoot;
+        
         
     }
 
@@ -22,7 +22,7 @@ public class InputTest : MonoBehaviour
     {
         _testActions.Disable();
         _testActions.Player.Jump.performed -= Jump;
-        _testActions.Player.Shoot.performed -= Shoot;
+        
         
     }
 
@@ -30,9 +30,5 @@ public class InputTest : MonoBehaviour
     {
         Debug.Log("Jump");
     }
-
-    void Shoot(InputAction.CallbackContext context)
-    {
-        Debug.Log("BANG!!!");
-    }
+    
 }
