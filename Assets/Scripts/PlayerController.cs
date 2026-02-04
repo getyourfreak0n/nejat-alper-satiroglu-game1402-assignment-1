@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     private float _horizontalInput;
     private Rigidbody2D _playerRb;
-    private bool isOnGround;
+    private bool _isOnGround;
 
     [Header("Ground Check")]
     [SerializeField] private LayerMask groundLayer;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     void HandleJumpInput()
     {
         if (_playerRb == null) return;
-        if (!isOnGround) return;
+        if (!_isOnGround) return;
 
         _playerRb.AddForceY(jumpForce, ForceMode2D.Impulse);
     }
@@ -62,10 +62,10 @@ public class PlayerController : MonoBehaviour
             groundLayer
         );
 
-        isOnGround = hit.collider != null;
+        _isOnGround = hit.collider != null;
 
         Debug.DrawRay(origin, Vector2.down * groundCheckDistance,
-            isOnGround ? Color.green : Color.red);
+            _isOnGround ? Color.green : Color.red);
     }
 
     void HandleMovement()

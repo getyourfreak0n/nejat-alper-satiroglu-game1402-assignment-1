@@ -38,28 +38,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "8aad14cc-5175-4b11-8f7b-2df0d37a65a6",
-                    "path": "<XInputController>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f5237013-8926-45df-91d6-07d00759e7cc",
-                    "path": "<DualShockGamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "1D Axis",
                     "id": "9d6c67eb-fd18-4b51-a438-e0f3de503c0a",
                     "path": "1DAxis",
